@@ -5,7 +5,7 @@ function TodoList(props) {
   return (
     <ul className="list-group">
       {todos.map((todo) => (
-        <TodoItem {...todo} />
+        <TodoItem key={todo.id} {...todo} />
       ))}
     </ul>
   );

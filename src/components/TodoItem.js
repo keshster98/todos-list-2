@@ -1,21 +1,21 @@
-import TodoCheckboxFill from "./TodoCheckboxFill";
-import TodoCheckboxNoFill from "./TodoCheckboxNoFill";
-import TodoDeletebox from "./TodoDeletebox";
-
 function TodoItem(props) {
-  const { text = "Null", isCompleted = false } = props;
+  const { text = "Null", isCompleted = true } = props;
 
-  return isCompleted === true ? (
+  return (
     <li className="list-group-item d-flex justify-content-between align-items-center">
-      <TodoCheckboxFill />
-      <span className="ms-2">{text}</span>
-      <TodoDeletebox />
-    </li>
-  ) : (
-    <li className="list-group-item d-flex justify-content-between align-items-center">
-      <TodoCheckboxNoFill />
-      <span className="ms-2">{text}</span>
-      <TodoDeletebox />
+      <div>
+        <button
+          className={isCompleted ? "btn btn-sm btn-success" : "btn btn-sm"}
+        >
+          <i className="bi bi-check-square"></i>
+        </button>
+        <span className="ms-2">{text}</span>
+      </div>
+      <div>
+        <button className="btn btn-sm btn-danger">
+          <i className="bi bi-trash"></i>
+        </button>
+      </div>
     </li>
   );
 }
