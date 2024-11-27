@@ -5,9 +5,8 @@ import AddTodoForm from "./components/AddTodoForm";
 import TodoList from "./components/TodoList";
 
 function App() {
-  const [todos, setTodos] = useState([]);
-
-  console.log(todos);
+  const stringTodos = localStorage.getItem("todos");
+  const [todos, setTodos] = useState(JSON.parse(stringTodos));
 
   return (
     <div
@@ -21,6 +20,8 @@ function App() {
           onTodosDelete={(id) => {
             const newTodos = todos.filter((todo) => todo.id !== id);
             setTodos(newTodos);
+            let stringedNewTodos = JSON.stringify(newTodos);
+            localStorage.setItem("todos", stringedNewTodos);
           }}
           onTodosStatus={(id) => {
             const newTodos = todos.map((todo) => {
@@ -30,6 +31,8 @@ function App() {
               return todo;
             });
             setTodos(newTodos);
+            let stringedNewTodos = JSON.stringify(newTodos);
+            localStorage.setItem("todos", stringedNewTodos);
           }}
         />
         <AddTodoForm
@@ -41,6 +44,8 @@ function App() {
               isCompleted: false,
             });
             setTodos(newTodos);
+            let stringedNewTodos = JSON.stringify(newTodos);
+            localStorage.setItem("todos", stringedNewTodos);
           }}
         />
       </div>
