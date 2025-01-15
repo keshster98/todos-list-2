@@ -6,7 +6,7 @@ import TodoList from "./components/TodoList";
 
 function App() {
   const stringTodos = localStorage.getItem("todos");
-  const [todos, setTodos] = useState(JSON.parse(stringTodos));
+  const [todos, setTodos] = useState(JSON.parse(stringTodos) || []);
 
   return (
     <div
